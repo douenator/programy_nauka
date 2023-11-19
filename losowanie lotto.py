@@ -2,10 +2,20 @@ import random
 
 def wybierz_liczby():
     losy = []
-    print("Podaj sześć różnych liczb z przedziału 1-49")
-    for i in range(6):
-        los = int(input(f"Podaj liczbę {i + 1}: "))
-        losy.append(los)
+    print("Podaj sześć różnych liczb z przedziału 1-49.")
+    while len(losy) < 6:
+        try:
+            los = int(input(f"Podaj liczbę {len(losy) + 1}: "))
+            if los < 1 or los > 49:
+                print("Liczba spoza przedziału 1-49")
+                continue
+            if los in losy:
+                print("Nie można powtarzać liczb.")
+                continue
+        except ValueError:
+            print("Niepoprawna wartość.")
+        else:
+            losy.append(los)
     return sorted(losy)
     
 def losuj_liczby():
