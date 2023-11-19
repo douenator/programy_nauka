@@ -40,6 +40,8 @@ def chybiltrafil():
     losy_maszyny = losuj_liczby()
     trafione = set(losy_maszyny) & set(losy)
     ilosc_trafien = len(trafione)
+    print(f"Twoje losy to: {losy}")
+    print(f"Losy maszyny to: {losy_maszyny}")
     print(f"Trafiłeś {ilosc_trafien} liczby.")
 
 print("Witaj samuraju.")
