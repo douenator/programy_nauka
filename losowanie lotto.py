@@ -35,4 +35,20 @@ def symulator_lotto():
     print(f"Komputer wylosował takie same liczby: {losy_maszyny}")
     print(f"Liczba prób potrzebnych do trafienia wszystkich liczb: {proby}")
 
-symulator_lotto()
+def chybiltrafil():
+    losy = wybierz_liczby()
+    losy_maszyny = losuj_liczby()
+    trafione = set(losy_maszyny) & set(losy)
+    ilosc_trafien = len(trafione)
+    print(f"Twoje losy to: {losy}")
+    print(f"Losy maszyny to: {losy_maszyny}")
+    print(f"Trafiłeś {ilosc_trafien} liczby.")
+
+print("Witaj samuraju.")
+print("Wybierz opcje: Symulator Lotto, Symulator Chybił Trafił")
+
+wybor =  input("Opcja: ")
+if wybor == "Symulator Lotto":
+    symulator_lotto()
+elif wybor == "Symulator Chybił Trafił":
+    chybiltrafil()
