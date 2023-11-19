@@ -6,7 +6,7 @@ def wybierz_liczby():
     for i in range(6):
         los = int(input(f"Podaj liczbę {i + 1}: "))
         losy.append(los)
-    return losy
+    return sorted(losy)
     
 def losuj_liczby():
     return sorted(random.sample(range(1, 50), 6))
