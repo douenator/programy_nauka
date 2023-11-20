@@ -42,10 +42,16 @@ def chybiltrafil():
     print(f"Trafiłeś {ilosc_trafien} liczby.")
 
 print("Witaj samuraju.")
-print("Wybierz opcje: Symulator Lotto, Symulator Chybił Trafił")
 
-wybor =  input("Opcja: ")
-if wybor == "Symulator Lotto":
-    symulator_lotto()
-elif wybor == "Symulator Chybił Trafił":
-    chybiltrafil()
+while True:
+    print("Wybierz opcje: 1. Symulator Lotto, 2. Symulator Chybił Trafił, 3. Wyjście")
+
+    wybor =  input("Opcja: ")
+    if wybor == "1":
+        symulator_lotto()
+    elif wybor == "2":
+        chybiltrafil()
+    elif wybor == "3":
+        break
+    else:
+        print("Niepoprawny wybór, spróbuj ponownie")
