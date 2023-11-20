@@ -1,7 +1,7 @@
 import random
 
 def wybierz_liczby():
-    losy = []
+    losy = set()
     print("Podaj sześć różnych liczb z przedziału 1-49.")
     while len(losy) < 6:
         try:
@@ -9,17 +9,14 @@ def wybierz_liczby():
             if los < 1 or los > 49:
                 print("Liczba spoza przedziału 1-49")
                 continue
-            if los in losy:
-                print("Nie można powtarzać liczb.")
-                continue
         except ValueError:
             print("Niepoprawna wartość.")
         else:
-            losy.append(los)
-    return sorted(losy)
+            losy.add(los)
+    return (losy)
     
 def losuj_liczby():
-    return sorted(random.sample(range(1, 50), 6))
+    return set(random.sample(range(1, 50), 6))
 
 def symulator_lotto():
     losy = wybierz_liczby()
@@ -45,10 +42,16 @@ def chybiltrafil():
     print(f"Trafiłeś {ilosc_trafien} liczby.")
 
 print("Witaj samuraju.")
-print("Wybierz opcje: Symulator Lotto, Symulator Chybił Trafił")
 
-wybor =  input("Opcja: ")
-if wybor == "Symulator Lotto":
-    symulator_lotto()
-elif wybor == "Symulator Chybił Trafił":
-    chybiltrafil()
+while True:
+    print("Wybierz opcje: 1. Symulator Lotto, 2. Symulator Chybił Trafił, 3. Wyjście")
+
+    wybor =  input("Opcja: ")
+    if wybor == "1":
+        symulator_lotto()
+    elif wybor == "2":
+        chybiltrafil()
+    elif wybor == "3":
+        break
+    else:
+        print("Niepoprawny wybór, spróbuj ponownie")
