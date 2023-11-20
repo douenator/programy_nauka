@@ -1,25 +1,22 @@
 import random
 
 def wybierz_liczby():
-    losy = []
+    losy = set()
     print("Podaj sześć różnych liczb z przedziału 1-49.")
     while len(losy) < 6:
         try:
             los = int(input(f"Podaj liczbę {len(losy) + 1}: "))
-            if los < 1 or los > 49:
+            if 1 > los < 49:
                 print("Liczba spoza przedziału 1-49")
-                continue
-            if los in losy:
-                print("Nie można powtarzać liczb.")
                 continue
         except ValueError:
             print("Niepoprawna wartość.")
         else:
-            losy.append(los)
-    return sorted(losy)
+            losy.add(los)
+    return (losy)
     
 def losuj_liczby():
-    return sorted(random.sample(range(1, 50), 6))
+    return set(random.sample(range(1, 50), 6))
 
 def symulator_lotto():
     losy = wybierz_liczby()
