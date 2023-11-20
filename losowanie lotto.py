@@ -6,7 +6,7 @@ def wybierz_liczby():
     while len(losy) < 6:
         try:
             los = int(input(f"Podaj liczbę {len(losy) + 1}: "))
-            if 1 > los < 49:
+            if 1 < los < 49:
                 print("Liczba spoza przedziału 1-49")
                 continue
         except ValueError:
