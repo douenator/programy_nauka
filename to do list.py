@@ -20,7 +20,7 @@ while True:
     print("Witaj w liście rzeczy do zrobienia. Wybierz czynność, którą chcesz wykonać:")
     print("1. Dodaj do listy.\n2. Usuń z listy.\n3. Pokaż liste.\n4. Wyczyść liste.\n5. Wyjdź.\n")
     
-    wybor = input("Opcja:")
+    wybor = input("Opcja: ")
     if wybor == "1":
         dodaj_do_listy()
     elif wybor == "2":
