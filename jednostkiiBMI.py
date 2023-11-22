@@ -1,5 +1,7 @@
 from math import *
 from fractions import Fraction
+import string
+import random
 
 def licznikBMI():
     print("Licznik BMI")
@@ -43,11 +45,17 @@ def zamianaJednostek():
         x = float(input("Podaj wartość: "))
         wynik = ((x - 273.15) * 1.8) + 32
         print(round(wynik, 2))
+    else:
+        print("Niepoprawny wybór, spróbuj ponownie.")
+        return zamianaJednostek()
 
 def konwersjaWalut():
     return
 
 def generatorHasel():
-    return
+    listaZnaków = string.ascii_letters + string.digits + string.punctuation
+    haslo = "".join(random.choice(listaZnaków) for x in range(15))
+    print(haslo)
 
-zamianaJednostek()
+
+generatorHasel()
