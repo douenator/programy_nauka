@@ -70,7 +70,6 @@ def konwersjaWalut():
     return
 
 def generatorHasel():
-robimyGenerator
     print("Podaj długość hasła które chcesz wygenerować.")
     dlugosc = int(input(""))
     listaZnakow = string.ascii_letters + string.digits + string.punctuation
