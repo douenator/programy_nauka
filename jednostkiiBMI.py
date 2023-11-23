@@ -11,9 +11,7 @@ def licznikBMI():
     print(wynik)
 
 def zamianaJednostek():
-poprawkiheh
     print("Zamiana jednostek: Wybierz opcje:\n1. Kilometry na mile\n2. Mile na kilometry\n3. Celsjusze na fahrenheity\n4. Celsjusze na kelwiny\n5. Fahrenheity na celsjusze\n6. Fahrenheity na kelwiny\n7. Kelwiny na celsjusze\n8. Kelwiny na fahrenheity\n9. Wróć do menu wyboru.")
-
     wybor = input("Opcja: ")
     if wybor == "1":
         x = float(input("Podaj wartość: "))
@@ -47,7 +45,6 @@ poprawkiheh
         x = float(input("Podaj wartość: "))
         wynik = ((x - 273.15) * 1.8) + 32
         print(round(wynik, 2))
-
     elif wybor == "9":
         return
     else:
@@ -118,7 +115,6 @@ def generatorHasel():
 while True:
     print("Profesjonalny program douena.\nWybierz program z którego chcesz skorzystać.")
     print("1. Licznik BMI.\n2. Zamiana jednostek.\n3. Konwersja walut.\n4. Generator haseł.\n5. Wyjdź.\n")
-    
     wybor = input("Opcja: ")
     if wybor == "1":
         licznikBMI()
