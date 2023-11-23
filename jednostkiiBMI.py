@@ -50,14 +50,31 @@ def zamianaJednostek():
         return zamianaJednostek()
 
 def konwersjaWalut():
+    print("Konwersja walut: Wybierz opcje:\n 1. PLN\n 2. EURO\n 3. USD")
+    wyborPierwotnejWaluty = input("Opcja: ")
+    if wyborPierwotnejWaluty == "1":
+        print("Wybierz docelową walute:\n 1. EURO\n 2. USD")
+        wyborDocelowejWaluty = input("Opcja: ")
+        if wyborDocelowejWaluty == "1":
+            print("Podaj kwote: ")
+            kwota = float(input(""))
+            wynikZamiany = kwota * 0.23
+            print(f'{wynikZamiany} EURO')
+        elif wyborDocelowejWaluty == "2":
+            print("Podaj kwote: ")
+            kwota = float(input(""))
+            wynikZamiany = kwota * 0.25
+            print(f'{wynikZamiany} USD')            
+        else:
+            return konwersjaWalut()
     return
 
 def generatorHasel():
     print("Podaj długość hasła które chcesz wygenerować.")
     dlugosc = int(input(""))
-    listaZnaków = string.ascii_letters + string.digits + string.punctuation
-    haslo = "".join(random.choice(listaZnaków) for x in range(dlugosc))
+    listaZnakow = string.ascii_letters + string.digits + string.punctuation
+    haslo = "".join(random.choice(listaZnakow) for x in range(dlugosc))
     print(haslo)
 
 
-generatorHasel()
+konwersjaWalut()
