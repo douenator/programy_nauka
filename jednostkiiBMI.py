@@ -53,8 +53,12 @@ def konwersjaWalut():
     return
 
 def generatorHasel():
+robimyGenerator
+    print("Podaj długość hasła które chcesz wygenerować.")
+    dlugosc = int(input(""))
     listaZnaków = string.ascii_letters + string.digits + string.punctuation
-    haslo = "".join(random.choice(listaZnaków) for x in range(15))
+    haslo = "".join(random.choice(listaZnaków) for x in range(dlugosc))
+
     print(haslo)
 
 
