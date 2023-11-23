@@ -11,7 +11,9 @@ def licznikBMI():
     print(wynik)
 
 def zamianaJednostek():
-    print("Zamiana jednostek: Wybierz opcje:\n1. Kilometry na mile\n2. Mile na kilometry\n3. Celsjusz na fahrenheit\n4. Celsjusz na kelwin\n5. Fahrenheit na celsjusz\n6. Fahrenheit na kelwin\n7. Kelwin na celsjusz\n8. Kelwin na fahrenheit")
+poprawkiheh
+    print("Zamiana jednostek: Wybierz opcje:\n1. Kilometry na mile\n2. Mile na kilometry\n3. Celsjusze na fahrenheity\n4. Celsjusze na kelwiny\n5. Fahrenheity na celsjusze\n6. Fahrenheity na kelwiny\n7. Kelwiny na celsjusze\n8. Kelwiny na fahrenheity\n9. Wróć do menu wyboru.")
+
     wybor = input("Opcja: ")
     if wybor == "1":
         x = float(input("Podaj wartość: "))
@@ -45,12 +47,15 @@ def zamianaJednostek():
         x = float(input("Podaj wartość: "))
         wynik = ((x - 273.15) * 1.8) + 32
         print(round(wynik, 2))
+
+    elif wybor == "9":
+        return
     else:
         print("Niepoprawny wybór, spróbuj ponownie.")
         return zamianaJednostek()
 
 def konwersjaWalut():
-    print("Konwersja walut: Wybierz opcje:\n 1. PLN\n 2. EURO\n 3. USD")
+    print("Konwersja walut: Wybierz opcje:\n 1. PLN\n 2. EURO\n 3. USD\n 4. Wróć do menu wyboru.")
     wyborPierwotnejWaluty = input("Opcja: ")
     if wyborPierwotnejWaluty == "1":
         print("Wybierz docelową walute:\n 1. EURO\n 2. USD")
@@ -66,18 +71,65 @@ def konwersjaWalut():
             wynikZamiany = kwota * 0.25
             print(f'{wynikZamiany} USD')            
         else:
+            print("Niepoprawny wybór. Spróbuj ponownie.")
             return konwersjaWalut()
-    return
+    elif wyborPierwotnejWaluty == "2":
+        print("Wybierz docelową walute:\n 1. USD\n 2. PLN")
+        wyborDocelowejWaluty = input("Opcja: ")        
+        if wyborDocelowejWaluty == "1":
+            print("Podaj kwote: ")
+            kwota = float(input(""))
+            wynikZamiany = kwota * 1.09
+            print(f'{wynikZamiany} USD')
+        if wyborDocelowejWaluty == "2":
+            print("Podaj kwote: ")
+            kwota = float(input(""))
+            wynikZamiany = kwota * 4.37
+            print(f'{wynikZamiany} PLN')
+        else:
+            print("Niepoprawny wybór. Spróbuj ponownie.")
+            return konwersjaWalut()
+    elif wyborPierwotnejWaluty == "3":
+        print("Wybierz docelową walute:\n 1. EURO\n 2. PLN")
+        wyborDocelowejWaluty = input("Opcja: ")         
+        if wyborDocelowejWaluty == "1":
+            print("Podaj kwote: ")
+            kwota = float(input(""))
+            wynikZamiany = kwota * 0.92
+            print(f'{wynikZamiany} EURO')
+        if wyborDocelowejWaluty == "3":
+            print("Podaj kwote: ")
+            kwota = float(input(""))
+            wynikZamiany = kwota * 4.00
+            print(f'{wynikZamiany} PLN')
+        else:
+            print("Niepoprawny wybór. Spróbuj ponownie.")
+            return konwersjaWalut()
+    elif wyborPierwotnejWaluty == "4":
+        return
 
 def generatorHasel():
     print("Podaj długość hasła które chcesz wygenerować.")
     dlugosc = int(input(""))
     listaZnakow = string.ascii_letters + string.digits + string.punctuation
     haslo = "".join(random.choice(listaZnakow) for x in range(dlugosc))
-    listaZnaków = string.ascii_letters + string.digits + string.punctuation
-    haslo = "".join(random.choice(listaZnaków) for x in range(dlugosc))
+    print(f"Twoje hasło to: {haslo}")
 
-    print(haslo)
-
-
-konwersjaWalut()
+while True:
+    print("Profesjonalny program douena.\nWybierz program z którego chcesz skorzystać.")
+    print("1. Licznik BMI.\n2. Zamiana jednostek.\n3. Konwersja walut.\n4. Generator haseł.\n5. Wyjdź.\n")
+    
+    wybor = input("Opcja: ")
+    if wybor == "1":
+        licznikBMI()
+    elif wybor == "2":
+        zamianaJednostek()
+    elif wybor == "3":
+        konwersjaWalut()
+    elif wybor == "4":
+        generatorHasel()
+    elif wybor == "5":
+        print("Dzięki za skorzystanie z programu.")
+        break
+    else:
+        print("Niepoprawny wybór")
