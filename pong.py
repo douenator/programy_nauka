@@ -1,11 +1,15 @@
 import turtle
 
-# Tworzymy okno gry
+# Okno gry
 oknoGry = turtle.Screen()
 oknoGry.title("Pong cwiczenie")
 oknoGry.bgcolor("black")
 oknoGry.setup(width=800, height=600)
 oknoGry.tracer(0)
+
+# Wynik
+wynik_a = 0
+wynik_b = 0
 
 # Lewa rakietka
 lewaRakietka = turtle.Turtle()
@@ -34,6 +38,15 @@ pilka.penup()
 pilka.goto(0, 0)
 pilka.dx = 0.2
 pilka.dy = 0.2
+
+# Tablica wynikow
+tablicaWynikow = turtle.Turtle()
+tablicaWynikow.speed(0)
+tablicaWynikow.color("white")
+tablicaWynikow.penup()
+tablicaWynikow.hideturtle()
+tablicaWynikow.goto(0, 260)
+tablicaWynikow.write("Gracz A: 0 Gracz B: 0", align="center", font=("Times New Roman", 24, "normal"))
 
 # Funkcje
 def lewaRakietka_up():
@@ -83,10 +96,16 @@ while True:
     if pilka.xcor() > 390:
         pilka.goto(0, 0)
         pilka.dx *= -1
+        wynik_a += 1
+        tablicaWynikow.clear()
+        tablicaWynikow.write("Gracz A: {} Gracz B: {}".format(wynik_a, wynik_b), align="center", font=("Times New Roman", 24, "normal"))
 
     if pilka.xcor() < -390:
         pilka.goto(0, 0)
         pilka.dx *= -1
+        wynik_b += 1
+        tablicaWynikow.clear()
+        tablicaWynikow.write("Gracz A: {} Gracz B: {}".format(wynik_a, wynik_b), align="center", font=("Times New Roman", 24, "normal"))
 
     # Sprawdzanie kolizji z rakietkami
     if pilka.xcor() > 340 and pilka.xcor() < 350 and (pilka.ycor() < prawaRakietka.ycor() +40 and pilka.ycor() > prawaRakietka.ycor() -40):

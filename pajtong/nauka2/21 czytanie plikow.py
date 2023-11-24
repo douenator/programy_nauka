@@ -1,0 +1,1 @@
+open("testowy.txt", "r") # r to read, w to write, a to append oraz r+ to read + write
