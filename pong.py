@@ -1,4 +1,5 @@
 import turtle
+import winsound
 
 # Okno gry
 oknoGry = turtle.Screen()
@@ -88,10 +89,12 @@ while True:
     if pilka.ycor() > 290:
         pilka.sety(290)
         pilka.dy *= -1
+        winsound.PlaySound("ahh.wav", winsound.SND_ASYNC)
 
     if pilka.ycor() < -290:
         pilka.sety(-290)
         pilka.dy *= -1
+        winsound.PlaySound("ahh.wav", winsound.SND_ASYNC)
 
     if pilka.xcor() > 390:
         pilka.goto(0, 0)
@@ -99,18 +102,22 @@ while True:
         wynik_a += 1
         tablicaWynikow.clear()
         tablicaWynikow.write("Gracz A: {} Gracz B: {}".format(wynik_a, wynik_b), align="center", font=("Times New Roman", 24, "normal"))
-
+        winsound.PlaySound("ahh.wav", winsound.SND_ASYNC)
+        
     if pilka.xcor() < -390:
         pilka.goto(0, 0)
         pilka.dx *= -1
         wynik_b += 1
         tablicaWynikow.clear()
         tablicaWynikow.write("Gracz A: {} Gracz B: {}".format(wynik_a, wynik_b), align="center", font=("Times New Roman", 24, "normal"))
-
+        winsound.PlaySound("ahh.wav", winsound.SND_ASYNC)
+        
     # Sprawdzanie kolizji z rakietkami
     if pilka.xcor() > 340 and pilka.xcor() < 350 and (pilka.ycor() < prawaRakietka.ycor() +40 and pilka.ycor() > prawaRakietka.ycor() -40):
         pilka.setx(340)
         pilka.dx *= -1
+        winsound.PlaySound("ahh.wav", winsound.SND_ASYNC)        
     if pilka.xcor() < -340 and pilka.xcor() > -350 and (pilka.ycor() < lewaRakietka.ycor() +40 and pilka.ycor() > lewaRakietka.ycor() -40):
         pilka.setx(-340)
         pilka.dx *= -1
+        winsound.PlaySound("ahh.wav", winsound.SND_ASYNC)        
