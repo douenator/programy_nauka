@@ -1,5 +1,6 @@
 from math import *
 from fractions import Fraction
+from forex_python.converter import CurrencyRates
 import string
 import random
 
@@ -8,7 +9,19 @@ def licznikBMI():
     waga = float(input("Podaj wage w kilogramach: "))
     wzrost = float(input("Podaj wzrost w metrach: "))
     wynik = waga / pow(wzrost, 2)
-    print(wynik)
+    print(f"Twoje BMI to: {round(wynik, 2)}")
+    if wynik < 16:
+        print("Wygłodzenie")
+    elif wynik > 16 and wynik < 16.99:
+        print("Wychudzenie")
+    elif wynik > 17 and wynik < 18.49:
+        print("Niedowaga")
+    elif wynik > 18.5 and wynik < 24.99:
+        print("Wartość prawidłowa")
+    elif wynik > 25 and wynik < 29.99:
+        print("Nadwaga")
+    elif wynik > 30:
+        print("Otyłość")
 
 def zamianaJednostek():
     print("Zamiana jednostek: Wybierz opcje:\n1. Kilometry na mile\n2. Mile na kilometry\n3. Celsjusze na fahrenheity\n4. Celsjusze na kelwiny\n5. Fahrenheity na celsjusze\n6. Fahrenheity na kelwiny\n7. Kelwiny na celsjusze\n8. Kelwiny na fahrenheity\n9. Wróć do menu wyboru.")
@@ -52,58 +65,17 @@ def zamianaJednostek():
         return zamianaJednostek()
 
 def konwersjaWalut():
-    print("Konwersja walut: Wybierz opcje:\n 1. PLN\n 2. EURO\n 3. USD\n 4. Wróć do menu wyboru.")
-    wyborPierwotnejWaluty = input("Opcja: ")
-    if wyborPierwotnejWaluty == "1":
-        print("Wybierz docelową walute:\n 1. EURO\n 2. USD")
-        wyborDocelowejWaluty = input("Opcja: ")
-        if wyborDocelowejWaluty == "1":
-            print("Podaj kwote: ")
-            kwota = float(input(""))
-            wynikZamiany = kwota * 0.23
-            print(f'{wynikZamiany} EURO')
-        elif wyborDocelowejWaluty == "2":
-            print("Podaj kwote: ")
-            kwota = float(input(""))
-            wynikZamiany = kwota * 0.25
-            print(f'{wynikZamiany} USD')            
-        else:
-            print("Niepoprawny wybór. Spróbuj ponownie.")
-            return konwersjaWalut()
-    elif wyborPierwotnejWaluty == "2":
-        print("Wybierz docelową walute:\n 1. USD\n 2. PLN")
-        wyborDocelowejWaluty = input("Opcja: ")        
-        if wyborDocelowejWaluty == "1":
-            print("Podaj kwote: ")
-            kwota = float(input(""))
-            wynikZamiany = kwota * 1.09
-            print(f'{wynikZamiany} USD')
-        if wyborDocelowejWaluty == "2":
-            print("Podaj kwote: ")
-            kwota = float(input(""))
-            wynikZamiany = kwota * 4.37
-            print(f'{wynikZamiany} PLN')
-        else:
-            print("Niepoprawny wybór. Spróbuj ponownie.")
-            return konwersjaWalut()
-    elif wyborPierwotnejWaluty == "3":
-        print("Wybierz docelową walute:\n 1. EURO\n 2. PLN")
-        wyborDocelowejWaluty = input("Opcja: ")         
-        if wyborDocelowejWaluty == "1":
-            print("Podaj kwote: ")
-            kwota = float(input(""))
-            wynikZamiany = kwota * 0.92
-            print(f'{wynikZamiany} EURO')
-        if wyborDocelowejWaluty == "3":
-            print("Podaj kwote: ")
-            kwota = float(input(""))
-            wynikZamiany = kwota * 4.00
-            print(f'{wynikZamiany} PLN')
-        else:
-            print("Niepoprawny wybór. Spróbuj ponownie.")
-            return konwersjaWalut()
-    elif wyborPierwotnejWaluty == "4":
-        return
+    def konwersja(ilosc, pierwotnaWaluta, docelowaWaluta):
+        k = CurrencyRates()
+        wynik = k.convert(pierwotnaWaluta, docelowaWaluta, ilosc)
+        return wynik
+
+    kwota = float(input("Podaj kwotę: "))
+    pierwotnaWaluta = input("Podaj pierwotną walutę: ")
+    docelowaWaluta = input("Podaj docelową walutę: ")
+
+    kwotaPoKonwersji = konwersja(kwota, pierwotnaWaluta, docelowaWaluta)
+    print(f"{kwota} {pierwotnaWaluta} = {round(kwotaPoKonwersji, 2)} {docelowaWaluta}")
 
 def generatorHasel():
     print("Podaj długość hasła które chcesz wygenerować.")
